@@ -204,4 +204,4 @@ def chat():
 
         print(chatWithBot(inp))
 
-chat()
+#chat()
