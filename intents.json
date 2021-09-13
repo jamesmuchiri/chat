@@ -1,0 +1,22 @@
+{"intents": [
+    {
+      "tag": "Who",
+      "patterns": ["who are you", "what are you","what your name","tell me somthing about you"],
+      "responses": ["I am Paz😇, a Healthcare bot.\nI am here to help you navigate around our interface. eg. \n\n Registration (if you are a new patient) \n Return of an existing patient"]
+    },
+    {
+      "tag": "thanks",
+      "patterns": ["Thanks", "Thank you", "Thats helpful", "Thanks a lot!"],
+      "responses": ["Happy to help!🤗", "Any time!🤗", "My pleasure🤗"]
+    },
+    {
+      "tag": "Registration",
+      "patterns": ["how to register","register","i am a new patient","registration"],
+      "responses": ["For resgistration you need to provied:\n\n   🧍Username _(it's not neccesarily your real name)_\n\n   📧Email (it should be a valid one where we can comunicate with you incase of anything)\n\n   🔑Password (it should contain at least 8 characters including number,uppercase and lowercase letters)"]
+    },
+    {
+      "tag": "login",
+      "patterns": ["how to login","login","i am existing patient","log in"],
+      "responses": ["For log in, \nYou need to use the 📧Email and 🔑Password used during your registration.\n\nIncase you do not remember the password, you can click the Forgotten password button and you will receive a link on your email."]
+    }
+  ]}
