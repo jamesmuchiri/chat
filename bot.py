@@ -26,6 +26,8 @@ from maya import MayaInterval
 from datetime import datetime
 from dateutil.parser import parse
 
+import mysql.connector
+
 
 nltk.download('punkt')
 with open("intents.json",encoding="utf8") as file:
@@ -105,7 +107,6 @@ def chatWithBot(inputText):
     global responded_A
 
     greetings = ("hi","hey","hello","start")
-    
  
     currentText = bag_of_words(inputText,words)
     currentTextArray =[currentText]
@@ -188,7 +189,6 @@ def chatWithBot(inputText):
 
             need=("Hey👋 {}\n\nWe are happy to have you 😍.I can help you in the following ways.\n\n   📝 Registration (if you are a new patient) \n   🔒 Log in (if you are an existing patient)" 
             ).format(name)
-            
 
             responded_A = False
             return(need)
@@ -205,5 +205,3 @@ def chat():
             break
 
         print(chatWithBot(inp))
-
-#chat()
