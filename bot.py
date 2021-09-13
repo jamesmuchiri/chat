@@ -103,7 +103,6 @@ def bag_of_words(s, words):
 
 def chatWithBot(inputText):
     global responded_A
-    global responded_B
 
     greetings = ("hi","hey","hello","start")
     
