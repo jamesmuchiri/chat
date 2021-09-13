@@ -26,6 +26,15 @@ from maya import MayaInterval
 from datetime import datetime
 from dateutil.parser import parse
 
+import mysql.connector
+
+db = mysql.connector.connect(
+    host = "localhost",
+    user = "root",
+    passwd = "matenzawa",
+    database="Healthcare_Feedback"
+    
+)
 
 nltk.download('punkt')
 with open("intents.json",encoding="utf8") as file:
@@ -103,8 +112,10 @@ def bag_of_words(s, words):
 
 def chatWithBot(inputText):
     global responded_A
+    global responded_B
 
     greetings = ("hi","hey","hello","start")
+    feedback = ("feedback","i have a feedback")
  
     currentText = bag_of_words(inputText,words)
     currentTextArray =[currentText]
@@ -187,9 +198,41 @@ def chatWithBot(inputText):
 
             need=("Hey👋 {}\n\nWe are happy to have you 😍.I can help you in the following ways.\n\n   📝 Registration (if you are a new patient) \n   🔒 Log in (if you are an existing patient)" 
             ).format(name)
+            
 
             responded_A = False
             return(need)
+
+    elif inputText in feedback:
+        reply_v = ("Do you have any Suggestions for the interface?.\nThnaks ")
+        responded_B = True
+        return(reply_v)
+
+    elif responded_B ==True:
+
+        global feedbackM
+        feedbackM = inputText
+
+        if not re.match("^[A-z][A-z|\.|\s]+$",feedbackM):
+            reply_v = ("Please give a vallid name ^Example james^")
+            return (reply_v)
+
+        else:
+
+            need=("That is so great to hear🤗. We really try our best to [do what you’re being praised for]. \nAnd thank you so much for taking the time to provide your feedback.\n\nSee you soon😇")
+            
+            mycursor = db.cursor()
+            mycursor.execute('''INSERT INTO Interface (name) VALUES (%s)''', (name,))
+            db.commit()
+            
+            mycursor.execute('''UPDATE Interface SET Feedback= (%s)''', (feedbackM,))
+            db.commit()
+
+            responded_B = False
+            return(need)
+
+
+
             
     else:
         return "Take it easy on me😓, i am still learning.\n\nMosty ask questions related to the interface and i will give you an appropriate answer. Thanks😍"
