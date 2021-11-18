@@ -115,10 +115,6 @@ db = mysql.connector.connect(
 
 app = Flask(__name__)
 
-@app.route("/")
-def hello():
-    return "Welcome to the whatsapp chatbot for businesses"
-
 @app.route("/bot", methods=["GET","POST"])
 
 
