@@ -69,7 +69,7 @@ model = tflearn.DNN(net)
 
 
 
-model.fit(train,output, n_epoch=500, batch_size = 8, show_metric = True)
+model.fit(train,output, n_epoch=100, batch_size = 8, show_metric = True)
 model.save("model.tflearn")
 
 def bag_of_words(s, words):
@@ -396,12 +396,8 @@ def reply_whatsapp():
 
 if __name__ == "__main__":
 
-    app.run(debug=True)
     model.load("model.tflearn")
-
-
-
-
+    app.run(debug=True)
 
 
 
