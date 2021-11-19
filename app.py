@@ -107,8 +107,7 @@ db = mysql.connector.connect(
    database = "heroku_9ae07b29d1d8813",
    autocommit = True,
    port ="3306",
-   reconnect=True
-
+  
    
 )
 
