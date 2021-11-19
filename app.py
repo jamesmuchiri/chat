@@ -118,7 +118,7 @@ db = mysql.connector.connect(
 
 app = Flask(__name__)
 
-@app.route("/bot", methods=["GET","POST"])
+@app.route("/bot", methods=["POST"])
 
 
 def reply_whatsapp():
@@ -396,11 +396,12 @@ def reply_whatsapp():
 
 if __name__ == "__main__":
 
+    app.run(debug=True)
     model.load("model.tflearn")
 
 
 
-app.run()
+
 
 
 
