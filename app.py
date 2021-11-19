@@ -149,9 +149,19 @@ def reply_whatsapp():
             if tg["tag"] == tag:
                 responses = tg["responses"]
                 resp.body(random.choice(responses))
+                
 
 
     elif msg.lower() in greetings:
+        
+        responded_E = False
+        responded_F = False
+        responded_D = False
+        responded_T = False
+        responded_C = False
+        responded_A = False
+        responded_I = False
+        
         now = maya.MayaDT.from_datetime(datetime.utcnow())
         Time_zone = now.hour +3
 
@@ -182,13 +192,7 @@ def reply_whatsapp():
             resp.body(reply_greetings)
             resp.media('https://i.ibb.co/vw33c6C/Navv.png')
         
-        responded_E = False
-        responded_F = False
-        responded_D = False
-        responded_T = False
-        responded_C = False
-        responded_A = False
-        responded_I = False
+       
 
         
 
@@ -386,6 +390,14 @@ def reply_whatsapp():
                     "\nMosty ask questions related to *Healthcare* and i will give you an appropriate answer. Thanks")
         resp.body(reply)
         resp.media('https://i.ibb.co/hs5YLXc/nn.png')
+        
+        responded_E = False
+        responded_F = False
+        responded_D = False
+        responded_T = False
+        responded_C = False
+        responded_A = False
+        responded_I = False
 
     return str(response)  
 
