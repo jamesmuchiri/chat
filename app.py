@@ -102,10 +102,13 @@ import mysql.connector
 db = mysql.connector.connect(
     
    host = "us-cdbr-east-04.cleardb.com",
-    user = "b810f749eee078",
-    passwd = "243faaf9",
-    database = "heroku_9ae07b29d1d8813",
-    autocommit = True
+   user = "b810f749eee078",
+   passwd = "243faaf9",
+   database = "heroku_9ae07b29d1d8813",
+   autocommit = True,
+   port ="3306",
+   reconnect=True
+
    
 )
 
@@ -150,6 +153,13 @@ def reply_whatsapp():
                 responses = tg["responses"]
                 resp.body(random.choice(responses))
                 
+                responded_E = False
+                responded_F = False
+                responded_D = False
+                responded_T = False
+                responded_C = False
+                responded_A = False
+                responded_I = False
 
 
     elif msg.lower() in greetings:
