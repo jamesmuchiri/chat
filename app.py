@@ -99,13 +99,17 @@ from maya import MayaInterval
 import mysql.connector
 
 
-
-
-import dj_database_url
-
-db = dj_database_url.config(
-    default='mysql://root:<matenzawa>@localhost:3306/<Healthcare_bot>',
+db = mysql.connector.connect(
+    
+    host = "us-cdbr-east-04.cleardb.com",
+    user = "b6048aaefc5176",
+    passwd = "fac29fc7",
+    database = "heroku_47f8012ff5340dd",
+    autocommit = True
+   
 )
+
+
 
 
 #mycursor.execute("CREATE DATABASE Healthcare_bot")
