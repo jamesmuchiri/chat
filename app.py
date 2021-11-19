@@ -69,7 +69,7 @@ model = tflearn.DNN(net)
 
 
 
-model.fit(train,output, n_epoch=100, batch_size = 8, show_metric = True)
+model.fit(train,output, n_epoch=300, batch_size = 8, show_metric = True)
 model.save("model.tflearn")
 
 def bag_of_words(s, words):
@@ -118,7 +118,7 @@ db = mysql.connector.connect(
 
 app = Flask(__name__)
 
-@app.route("/bot", methods=["POST"])
+@app.route("/bot", methods=["GET","POST"])
 
 
 def reply_whatsapp():
