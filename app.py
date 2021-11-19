@@ -101,10 +101,10 @@ import mysql.connector
 
 db = mysql.connector.connect(
     
-    host = "us-cdbr-east-04.cleardb.com",
-    user = "b6048aaefc5176",
-    passwd = "fac29fc7",
-    database = "heroku_47f8012ff5340dd",
+   host = "us-cdbr-east-04.cleardb.com",
+    user = "b810f749eee078",
+    passwd = "243faaf9",
+    database = "heroku_9ae07b29d1d8813",
     autocommit = True
    
 )
