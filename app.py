@@ -138,14 +138,6 @@ def reply_whatsapp():
                 responses = tg["responses"]
                 resp.body(random.choice(responses))
 
-                responded_E = False
-                responded_F = False
-                responded_D = False
-                responded_T = False
-                responded_C = False
-                responded_A = False
-                responded_I = False
-
 
     elif msg.lower() in greetings:
         
@@ -248,8 +240,9 @@ def reply_whatsapp():
                 first_name = ("\nWhats your *full name*")
                 resp.body (first_name)
                 
-                responded_E = False
                 responded_F = True
+                responded_E = False
+                
 
         else:
             reply_VE=("Please give a valid Email address "
@@ -271,8 +264,9 @@ def reply_whatsapp():
             age_get =("What is the *age* of the patient?")
             resp.body(age_get)
 
-            responded_F = False
             responded_A = True
+            responded_F = False
+            
 
 
     elif responded_A == True:
@@ -289,8 +283,10 @@ def reply_whatsapp():
                 resp.body(date_get)
                 response.message("Please tell me the *date* you want to come in."
                         "\n_*Example: 24 jan, 2021*_")
-                responded_A = False
+
                 responded_D = True
+                responded_A = False
+                
         except ValueError:
             reply_v = ("Please give a vallid age. I only accept numbers.")
             resp.body (reply_v)
@@ -314,8 +310,9 @@ def reply_whatsapp():
             reply = ("At what *time?*")
             resp.body(reply)
 
-            responded_D = False
             responded_T = True
+            responded_D = False
+            
 
     elif responded_T == True:
         time = request.form['Body']
@@ -341,8 +338,9 @@ def reply_whatsapp():
             
             resp.body(reply)
 
-            responded_T= False
             responded_C =True
+            responded_T= False
+            
 
           
            
@@ -351,7 +349,16 @@ def reply_whatsapp():
 
         c = ("yes","confirm","y")
         disagree = ("no","n","false")
-        
+        db = mysql.connector.connect(
+    
+            host = "us-cdbr-east-04.cleardb.com",
+            user = "b810f749eee078",
+            passwd = "243faaf9",
+            database = "heroku_9ae07b29d1d8813",
+            autocommit = True,
+            port ="3306",
+        )
+
         if confirm.lower() in c:
 
             mycursor = db.cursor()
@@ -398,13 +405,6 @@ def reply_whatsapp():
         resp.body(reply)
         resp.media('https://i.ibb.co/hs5YLXc/nn.png')
         
-        responded_E = False
-        responded_F = False
-        responded_D = False
-        responded_T = False
-        responded_C = False
-        responded_A = False
-        responded_I = False
 
     return str(response)  
 
