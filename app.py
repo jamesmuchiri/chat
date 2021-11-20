@@ -199,8 +199,9 @@ def reply_whatsapp():
         r1 = ("Whats your *Email address*, just to check for any corresponding appointments")
         resp.body(r1)
         
-        responded_I = False
         responded_E = True
+        responded_I = False
+        
         
        
     elif responded_E == True:
