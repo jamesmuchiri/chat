@@ -99,20 +99,6 @@ from maya import MayaInterval
 import mysql.connector
 
 
-db = mysql.connector.connect(
-    
-   host = "us-cdbr-east-04.cleardb.com",
-   user = "b810f749eee078",
-   passwd = "243faaf9",
-   database = "heroku_9ae07b29d1d8813",
-   autocommit = True,
-   port ="3306",
-  
-   
-)
-
-
-
 
 #mycursor.execute("CREATE DATABASE Healthcare_bot")
 #mycursor.execute("CRAETE TABLE Appointments(first_name VARCHAR(50),last_name VARCHAR(50), personID int PRIMARY KEY AUTO_INCREMENT)")
@@ -151,7 +137,7 @@ def reply_whatsapp():
             if tg["tag"] == tag:
                 responses = tg["responses"]
                 resp.body(random.choice(responses))
-                
+
                 responded_E = False
                 responded_F = False
                 responded_D = False
@@ -213,18 +199,30 @@ def reply_whatsapp():
         responded_I = True
     
     elif responded_I == True or msg.lower() in appointmnet:
-        illness = request.form['Body']
 
+        illness = request.form['Body']
         global get_illness
         get_illness = illness
         
         r1 = ("Whats your *Email address*, just to check for any corresponding appointments")
         resp.body(r1)
         
-        responded_E = True
         responded_I = False
+        responded_E = True
+        
        
     elif responded_E == True:
+
+        db = mysql.connector.connect(
+    
+            host = "us-cdbr-east-04.cleardb.com",
+            user = "b810f749eee078",
+            passwd = "243faaf9",
+            database = "heroku_9ae07b29d1d8813",
+            autocommit = True,
+            port ="3306",
+        )
+
         email = request.form['Body']
         if email.endswith('@gmail.com') or email.endswith('@outlook.com'):
 
