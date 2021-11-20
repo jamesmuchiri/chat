@@ -345,10 +345,7 @@ def reply_whatsapp():
           
            
     elif responded_C == True:
-        confirm = request.form.get('Body','')
 
-        c = ("yes","confirm","y")
-        disagree = ("no","n","false")
         db = mysql.connector.connect(
     
             host = "us-cdbr-east-04.cleardb.com",
@@ -359,6 +356,11 @@ def reply_whatsapp():
             port ="3306",
         )
 
+        confirm = request.form['Body']
+        c = ("yes","confirm","y")
+        disagree = ("no","n","false")
+        
+
         if confirm.lower() in c:
 
             mycursor = db.cursor()
@@ -366,7 +368,7 @@ def reply_whatsapp():
             db.rollback()
 
             mycursor = db.cursor()
-            mycursor.execute('''UPDATE Appointments SET Number= (%s),Illness = (%s),Name= (%s) WHERE Email = (%s)''', (number,get_illness,f_name,get_email))
+            mycursor.execute('''UPDATE Appointments SET Number= (%s),Illnes = (%s),Name= (%s) WHERE Email = (%s)''', (number,get_illness,f_name,get_email))
             mycursor.execute('''UPDATE Appointments SET Age=(%s), Date= (%s),Time = (%s) WHERE Email = (%s)''', (age,date_V,time_h,get_email))
             db.commit()
 
